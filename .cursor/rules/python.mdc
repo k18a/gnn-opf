@@ -1,0 +1,49 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+## Pythonic Thinking
+- Know which version of Python you are using (use Python 3.9).
+- Follow the PEP 8 style guide.
+- Understand the differences between bytes, str, and unicode.
+- Write helper functions instead of embedding complex expressions in line.
+- Use list comprehensions instead of map and filter.
+- Consider generator expressions for large data comprehensions.
+- Prefer enumerate over range when iterating with indices.
+- Use zip to process iterators in parallel.
+- Avoid using else blocks after for and while loops.
+- Take advantage of each block in try/except/else/finally for proper resource management.
+
+## Functions
+- Prefer raising exceptions over returning None for error conditions.
+- Use generators instead of returning large lists when applicable.
+- Write clear docstrings for every function, describing parameters, returns, and exceptions.
+- Utilize keyword-only arguments to enforce clarity in function interfaces.
+- Provide optional behavior via keyword arguments.
+
+## Classes and Inheritance
+- Use helper classes (or dataclasses) for structured data instead of relying solely on dictionaries.
+- Avoid deep inheritance hierarchies; prefer composition when possible.
+- Use public attributes over private ones and rely on naming conventions for clarity.
+- Initialize parent classes with super() in class constructors.
+
+## Built-In Modules and Practices
+- Define function decorators using functools.wraps to preserve metadata.
+- Use context managers (with statements) for resource management.
+- Leverage built-in data structures and standard library modules instead of reinventing the wheel.
+
+## Collaboration and Code Organization
+- Write docstrings for every function, class, and module.
+- Organize modules into packages to create a stable API.
+- Use virtual environments for isolated and reproducible dependencies.
+- Follow Test-Driven Development (TDD) by writing tests for every feature using pytest.
+
+## Production and Debugging
+- Implement meaningful __repr__ methods for easier debugging.
+- Test everything thoroughly with pytest.
+- Use interactive debugging tools like pdb when necessary.
+- Monitor memory usage with appropriate tools if performance issues arise.
