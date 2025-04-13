@@ -1,20 +1,21 @@
-import os
 import pytest
-import torch
-from gnn_opf.pypsa_setup import load_network_config
-from gnn_opf.data.graph_data import convert_network_to_graph
+from gnn_opf.data.power_networks import load_power_network, build_graph_from_pandapower, to_pyg_data
+import networkx as nx
+from torch_geometric.data import Data
 
-def test_convert_network_to_graph():
-    # Load the PyPSA network using the existing configuration file.
-    network = load_network_config("config/ieee_14-bus_config.yaml")
-    # Convert the network to a PyTorch Geometric Data object.
-    data = convert_network_to_graph(network)
+def test_graph_conversion():
+    """Test the complete graph conversion pipeline."""
+    # Load a test network
+    pp_net = load_power_network('case14')
     
-    # Test: The number of nodes should equal the number of buses.
-    assert data.x.size(0) == len(network.buses), "Number of nodes does not match number of buses."
+    # Convert to networkx
+    nx_graph = build_graph_from_pandapower(pp_net)
+    assert isinstance(nx_graph, nx.Graph), "Graph conversion failed"
+    assert len(nx_graph.nodes) > 0, "Graph has no nodes"
+    assert len(nx_graph.edges) > 0, "Graph has no edges"
     
-    # Test: The edge_index tensor must have shape [2, num_edges].
-    assert data.edge_index.dim() == 2 and data.edge_index.size(0) == 2, "edge_index tensor shape is incorrect."
-    
-    # Test: Each edge must have 2 attributes (reactance and capacity).
-    assert data.edge_attr.size(1) == 2, "Each edge attribute should have 2 elements." 
+    # Convert to PyG
+    pyg_data = to_pyg_data(nx_graph)
+    assert isinstance(pyg_data, Data), "PyG conversion failed"
+    assert pyg_data.num_nodes == len(nx_graph.nodes), "Node count mismatch"
+    assert pyg_data.num_edges == len(nx_graph.edges) * 2, "Edge count mismatch (PyG uses directed edges)" 

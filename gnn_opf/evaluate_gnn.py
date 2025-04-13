@@ -1,6 +1,7 @@
 import torch
 from gnn_opf.train_gnn import train_gnn
 from gnn_opf.gnn_opf import PhysicsInformedGNN, physics_penalty
+from gnn_opf.data.power_networks import load_network_as_pyg
 
 def save_model(model, path="model_checkpoint.pth"):
     """
@@ -57,4 +58,7 @@ if __name__ == "__main__":
     results = evaluate_model(loaded_model)
     print("Evaluation Results:")
     for res in results:
-        print(res) 
+        print(res)
+
+    # Load IEEE 14-bus network in PyG format
+    network = load_network_as_pyg('case14') 

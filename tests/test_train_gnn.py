@@ -3,6 +3,7 @@ import torch
 import pytest
 from gnn_opf.train_gnn import read_scenarios, set_network_loads, train_gnn
 from gnn_opf.pypsa_setup import load_network_config
+from gnn_opf.data.power_networks import load_network_as_pyg
 
 def test_read_scenarios():
     csv_path = "data/generated_opf_scenarios.csv"
@@ -25,4 +26,7 @@ def test_set_network_loads():
 def test_training_pipeline():
     # Run training for a small number of epochs and check the trained model type.
     model = train_gnn(num_epochs=2, learning_rate=0.01)
-    assert isinstance(model, torch.nn.Module), "Trained model should be an instance of torch.nn.Module." 
+    assert isinstance(model, torch.nn.Module), "Trained model should be an instance of torch.nn.Module."
+
+    # Load test network
+    network = load_network_as_pyg('case14') 

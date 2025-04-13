@@ -5,6 +5,7 @@ import torch.optim as optim
 from gnn_opf.pypsa_setup import load_network_config
 from gnn_opf.data.graph_data import convert_network_to_graph
 from gnn_opf.gnn_opf import PhysicsInformedGNN, physics_penalty
+from gnn_opf.data.power_networks import load_network_as_pyg
 
 def read_scenarios(csv_path="data/generated_opf_scenarios.csv"):
     """
@@ -56,7 +57,7 @@ def train_gnn(num_epochs=10, learning_rate=0.01):
         total_loss = 0.0
         for scenario in scenarios:
             # Load network and update loads for the scenario
-            network = load_network_config("config/ieee_14-bus_config.yaml")
+            network = load_network_as_pyg('case14')
             set_network_loads(network, scenario["scenario"])
             graph = convert_network_to_graph(network)
 
