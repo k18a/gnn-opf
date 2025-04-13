@@ -1,0 +1,129 @@
+buses:
+  - id: 1
+    name: "Bus 1"
+    voltage: 230
+  - id: 2
+    name: "Bus 2"
+    voltage: 230
+  - id: 3
+    name: "Bus 3"
+    voltage: 230
+  - id: 4
+    name: "Bus 4"
+    voltage: 230
+  - id: 5
+    name: "Bus 5"
+    voltage: 230
+  - id: 6
+    name: "Bus 6"
+    voltage: 230
+  - id: 7
+    name: "Bus 7"
+    voltage: 230
+  - id: 8
+    name: "Bus 8"
+    voltage: 230
+  - id: 9
+    name: "Bus 9"
+    voltage: 230
+  - id: 10
+    name: "Bus 10"
+    voltage: 230
+  - id: 11
+    name: "Bus 11"
+    voltage: 230
+  - id: 12
+    name: "Bus 12"
+    voltage: 230
+  - id: 13
+    name: "Bus 13"
+    voltage: 230
+  - id: 14
+    name: "Bus 14"
+    voltage: 230
+
+lines:
+  - id: 1
+    from_bus: 1
+    to_bus: 2
+    reactance: 0.01938
+    capacity: 130
+  - id: 2
+    from_bus: 1
+    to_bus: 5
+    reactance: 0.05403
+    capacity: 130
+  - id: 3
+    from_bus: 2
+    to_bus: 3
+    reactance: 0.04699
+    capacity: 130
+  - id: 4
+    from_bus: 2
+    to_bus: 4
+    reactance: 0.05811
+    capacity: 130
+  - id: 5
+    from_bus: 2
+    to_bus: 5
+    reactance: 0.05695
+    capacity: 130
+  - id: 6
+    from_bus: 3
+    to_bus: 4
+    reactance: 0.06701
+    capacity: 130
+  - id: 7
+    from_bus: 4
+    to_bus: 5
+    reactance: 0.01335
+    capacity: 130
+  - id: 8
+    from_bus: 4
+    to_bus: 7
+    reactance: 0.0
+    capacity: 130
+  - id: 9
+    from_bus: 4
+    to_bus: 9
+    reactance: 0.0
+    capacity: 130
+  - id: 10
+    from_bus: 5
+    to_bus: 6
+    reactance: 0.0
+    capacity: 130
+  - id: 11
+    from_bus: 6
+    to_bus: 11
+    reactance: 0.0
+    capacity: 130
+  - id: 12
+    from_bus: 6
+    to_bus: 12
+    reactance: 0.0
+    capacity: 130
+  - id: 13
+    from_bus: 6
+    to_bus: 13
+    reactance: 0.0
+    capacity: 130
+  - id: 14
+    from_bus: 9
+    to_bus: 14
+    reactance: 0.0
+    capacity: 130
+
+generators:
+  - id: 1
+    bus: 1
+    max_output: 100
+    cost: 40
+  - id: 2
+    bus: 2
+    max_output: 100
+    cost: 40
+  - id: 3
+    bus: 3
+    max_output: 100
+    cost: 40 
