@@ -1,5 +1,5 @@
 import torch
-from src.inference_pipeline import run_inference
+from gnn_opf.inference_pipeline import run_inference
 
 def test_run_inference():
     predictions, penalty = run_inference()

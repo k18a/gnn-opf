@@ -1,8 +1,8 @@
 import os
 import torch
 import pytest
-from src.train_gnn import read_scenarios, set_network_loads, train_gnn
-from src.pypsa_setup import load_network_config
+from gnn_opf.train_gnn import read_scenarios, set_network_loads, train_gnn
+from gnn_opf.pypsa_setup import load_network_config
 
 def test_read_scenarios():
     csv_path = "data/generated_opf_scenarios.csv"

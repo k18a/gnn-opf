@@ -1,7 +1,7 @@
 import torch
 from torch_geometric.data import Data
 import pytest
-from src.gnn_opf import PhysicsInformedGNN, physics_penalty
+from gnn_opf.gnn_opf import PhysicsInformedGNN, physics_penalty
 
 def test_gnn_forward():
     # Create a dummy graph Data object with 4 nodes and a simple edge index.

@@ -1,7 +1,7 @@
 import torch
-from src.pypsa_setup import load_network_config
-from src.data.graph_data import convert_network_to_graph
-from src.gnn_opf import PhysicsInformedGNN, physics_penalty
+from gnn_opf.pypsa_setup import load_network_config
+from gnn_opf.data.graph_data import convert_network_to_graph
+from gnn_opf.gnn_opf import PhysicsInformedGNN, physics_penalty
 
 def run_inference():
     # Load the network from the configuration file.

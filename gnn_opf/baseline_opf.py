@@ -11,22 +11,24 @@ class OPFDataset(Dataset):
         with open(csv_file, "r") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                # Use scenario number as a float feature (normalized) and total_cost as target.
-                feature = float(row["scenario"])
+                # Read both the scenario number and bus1_load as float features.
+                feature1 = float(row["scenario"])
+                feature2 = float(row["bus1_load"])
                 target = float(row["total_cost"])
-                self.samples.append((feature, target))
+                # Combine them into a list of features.
+                self.samples.append(([feature1, feature2], target))
     
     def __len__(self):
         return len(self.samples)
     
     def __getitem__(self, idx):
-        feature, target = self.samples[idx]
-        # Convert to tensors; model expects 1D input.
-        return torch.tensor([feature], dtype=torch.float), torch.tensor([target], dtype=torch.float)
+        features, target = self.samples[idx]
+        # Convert to tensors; model now expects a 2D input.
+        return torch.tensor(features, dtype=torch.float), torch.tensor([target], dtype=torch.float)
 
 # Define a simple MLP model.
 class BaselineOPFModel(nn.Module):
-    def __init__(self, input_dim=1, hidden_dim=8, output_dim=1):
+    def __init__(self, input_dim=2, hidden_dim=8, output_dim=1):
         super(BaselineOPFModel, self).__init__()
         self.model = nn.Sequential(
             nn.Linear(input_dim, hidden_dim),
@@ -64,6 +66,6 @@ if __name__ == "__main__":
     csv_file = "data/generated_opf_scenarios.csv"
     model = train_baseline_model(csv_file)
     # Test a sample prediction using scenario = 1
-    test_feature = torch.tensor([[1.0]])
+    test_feature = torch.tensor([[1.0, 0.5]])
     prediction = model(test_feature)
     print(f"Sample prediction for scenario 1: {prediction.item()}") 

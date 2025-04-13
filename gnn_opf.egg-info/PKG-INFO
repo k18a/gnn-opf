@@ -1,0 +1,23 @@
+Metadata-Version: 2.4
+Name: gnn_opf
+Version: 0.1.0
+Summary: GNN-based Optimal Power Flow solver
+Author: Your Name
+Requires-Python: >=3.9
+Requires-Dist: pypsa
+Requires-Dist: torch
+Requires-Dist: torch-geometric
+Requires-Dist: pytest
+Requires-Dist: numpy
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Dynamic: author
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

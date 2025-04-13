@@ -1,7 +1,7 @@
 import os
 import torch
-from src.evaluate_gnn import save_model, load_model, evaluate_model
-from src.gnn_opf import PhysicsInformedGNN
+from gnn_opf.evaluate_gnn import save_model, load_model, evaluate_model
+from gnn_opf.gnn_opf import PhysicsInformedGNN
 
 def test_save_and_load_model(tmp_path):
     # Create a dummy model.
@@ -17,7 +17,7 @@ def test_save_and_load_model(tmp_path):
 
 def test_evaluate_model():
     # Train a model for a few epochs.
-    from src.train_gnn import train_gnn
+    from gnn_opf.train_gnn import train_gnn
     model = train_gnn(num_epochs=2, learning_rate=0.01)
     # Evaluate the model using the generated scenario CSV.
     evaluation_results = evaluate_model(model)

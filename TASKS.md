@@ -137,4 +137,18 @@
 - [x] Created tests/test_evaluate_gnn.py for the evaluation and model saving module. _(Completed: Implemented tests in tests/test_evaluate_gnn.py to verify model save/load functionality and evaluation metrics)_
 
 7.3 **Run Evaluation Module Tests**
-- [x] Ran pytest; evaluation module tests passed successfully. _(Completed: All evaluation module tests passed, verifying model persistence and evaluation functionality)_ 
+- [x] Ran pytest; evaluation module tests passed successfully. _(Completed: All evaluation module tests passed, verifying model persistence and evaluation functionality)_
+
+8.1 **Fix Total Cost Calculation**
+- [x] Updated total cost calculation in src/pypsa_data_generation.py to use correct generator cost computation.
+- [x] Added bus1_load feature to scenario generation for improved model input.
+
+8.2 **Enhance Input Features**
+- [x] Updated OPFDataset in src/baseline_opf.py to handle both scenario number and bus1_load features.
+- [x] Modified BaselineOPFModel to accept 2D input features.
+
+8.3 **Fix Matrix Rank Issues**
+- [x] Updated config/ieee_14-bus_config.yaml to replace zero reactance values with 0.0001.
+
+8.4 **Improve Model Loading**
+- [x] Modified src/evaluate_gnn.py to use map_location for safe model loading on CPU. 

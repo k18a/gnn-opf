@@ -1,7 +1,7 @@
 import os
 import csv
 import pytest
-from src.pypsa_data_generation import generate_opf_scenarios
+from gnn_opf.pypsa_data_generation import generate_opf_scenarios
 
 def test_generate_opf_scenarios():
     output_file = generate_opf_scenarios(num_scenarios=5)

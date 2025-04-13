@@ -1,8 +1,8 @@
 import os
 import pytest
 import torch
-from src.pypsa_setup import load_network_config
-from src.data.graph_data import convert_network_to_graph
+from gnn_opf.pypsa_setup import load_network_config
+from gnn_opf.data.graph_data import convert_network_to_graph
 
 def test_convert_network_to_graph():
     # Load the PyPSA network using the existing configuration file.

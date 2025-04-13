@@ -2,7 +2,7 @@ import os
 import yaml
 import pytest
 import pypsa
-from src.pypsa_setup import load_network_config
+from gnn_opf.pypsa_setup import load_network_config
 
 def test_config_file_exists():
     config_path = "config/ieee_14-bus_config.yaml"

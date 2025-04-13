@@ -1,6 +1,6 @@
 import os
 import torch
-from src.baseline_opf import OPFDataset, BaselineOPFModel, train_baseline_model
+from gnn_opf.baseline_opf import OPFDataset, BaselineOPFModel, train_baseline_model
 
 def test_dataset_loading():
     csv_file = "data/generated_opf_scenarios.csv"

@@ -1,6 +1,6 @@
 import torch
-from src.train_gnn import train_gnn
-from src.gnn_opf import PhysicsInformedGNN, physics_penalty
+from gnn_opf.train_gnn import train_gnn
+from gnn_opf.gnn_opf import PhysicsInformedGNN, physics_penalty
 
 def save_model(model, path="model_checkpoint.pth"):
     """
@@ -14,7 +14,7 @@ def load_model(path="model_checkpoint.pth", input_dim=1, hidden_dim=16, output_d
     Load the model from the specified path.
     """
     model = PhysicsInformedGNN(input_dim, hidden_dim, output_dim)
-    model.load_state_dict(torch.load(path))
+    model.load_state_dict(torch.load(path, map_location=torch.device('cpu')))
     model.eval()
     print(f"Model loaded from {path}")
     return model
@@ -24,9 +24,9 @@ def evaluate_model(model, test_csv="data/generated_opf_scenarios.csv"):
     Evaluate the model on the test scenario data.
     This function uses the test scenarios to run inference on the network and calculates a dummy evaluation metric.
     """
-    from src.train_gnn import read_scenarios, set_network_loads
-    from src.data.graph_data import convert_network_to_graph
-    from src.pypsa_setup import load_network_config
+    from gnn_opf.train_gnn import read_scenarios, set_network_loads
+    from gnn_opf.data.graph_data import convert_network_to_graph
+    from gnn_opf.pypsa_setup import load_network_config
     scenarios = read_scenarios(test_csv)
     evaluation_results = []
     for scenario in scenarios:
